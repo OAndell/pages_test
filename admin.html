@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./src/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="./src/events.js"></script>
+    <script src="./src/cindy.js"></script>
+    <script src="./src/clayson.js"></script>
+    <script src="./src/felo_z.js"></script>
+    <script src="./src/claras_heart.js"></script>
+    <script src="./src/functions.js"></script>
+    <link rel='stylesheet' href='./packages/fullcalendar-3.9.0/fullcalendar.css' />
+    <script src='./packages/moment.js'></script>
+    <script src='./packages/fullcalendar-3.9.0/fullcalendar.js'></script>
+    <link rel="shortcut icon" href="https://dbvjpegzift59.cloudfront.net/180040/563175-PQpjV.ico" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>STG Horse Organizer</title>
+</head>
+
+<body>
+    <div class="tab">
+        <button id="tab_horse">Häst</button>
+        <button id="tab_service">Tjänst</button>
+        <button id="tab_calendar">Kalender</button>
+        <button id="tab_admin">Administration</button>
+        <button  style="float:right" onclick="window.location.href='./login.html'">Logga ut</button>
+    </div>
+    <div id="horse_content" class="main_content">
+        <div class="btn-group">
+            <div class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+                <h2>Häst: Cindy <span class="caret"></span></h2>
+            </div>
+            <ul class="dropdown-menu">
+                <li>Cindy</li>
+                <li>Clayson</li>
+                <li>Felo Z</li>
+                <li>Clara´s Heart</li>
+            </ul>
+        </div>
+        <div id="cindy">
+            <div class="alert_bar">
+                <p><span id="show_alert" class="warning"><i class="fa fa-bell"></i> Du har (1) påminnelse!</span> <span
+                        id="add_alert" style="padding: 20px; cursor: pointer;"> <i class="fa fa-calendar-plus-o"></i>
+                        Lägg till påminnelse</span></p>
+            </div>
+            <div class="tab">
+                <button class="tablinks" onclick="openTab(event, 'Journal')">Journal</button>
+                <button class="tablinks" onclick="openTab(event, 'Foderstat')">Foderstat</button>
+                <button class="tablinks" onclick="openTab(event, 'Utrustning')">Utrustning</button>
+                <button class="tablinks" onclick="openTab(event, 'hovslagarbesök')">Senaste hovslagarbesök</button>
+                <button class="tablinks" onclick="openTab(event, 'vet')">Senaste vet. besök</button>
+                <button class="tablinks" onclick="openTab(event, 'behandl')">Senaste behandl. besök</button>
+                <button class="tablinks" onclick="openTab(event, 'Vac')">Vac./Avmask/Med</button>
+                <button class="tablinks" onclick="openTab(event, 'Träningsdagbok')">Träningsdagbok</button>
+                <button class="tablinks" onclick="openTab(event, 'Planera')">Planera Träning</button>
+                <button class="tablinks" onclick="openTab(event, 'Dokument')">Dokument</button>
+                <button class="tablinks" onclick="openTab(event, 'Rapporter')">Ekonomisk Rapport</button>
+
+            </div>
+            <div id="Journal" class="tabcontent">
+                <div class="journal">
+                   
+                </div>
+            </div>
+
+            <div id="Foderstat" class="tabcontent">
+                <div class="foder"></div>
+                <button class="booking_button">Ändra</button>
+            </div>
+
+
+
+
+            <div id="Utrustning" class="tabcontent">
+                <div class="gear">
+
+                </div>
+                <p><strong>Lägg till utrustning</strong></p>
+                <textarea></textarea> <br />
+                <button class="booking_button">Lägg till</button>
+
+            </div>
+
+            <div id="hovslagarbesök" class="tabcontent">
+                    <div class="hov_hist">
+                    
+                    </div>
+                <br />
+                <button class="booking_button open_modal_with_alert">Lägg till och skicka till ekonomisk rapport</button>
+            </div>
+
+            <div id="vet" class="tabcontent">
+                    <div class="vet_hist">
+                    
+                    </div>               
+                <br />
+                <button class="booking_button open_modal_with_alert">Lägg till och skicka till ekonomisk rapport</button>
+            </div>
+
+            <div id="behandl" class="tabcontent">
+                    <div class="beh_hist">
+                    
+                    </div>   
+                <br />
+                <button class="booking_button open_modal_with_alert">Lägg till och skicka till ekonomisk rapport</button>
+            </div>
+
+            <div id="Vac" class="tabcontent">
+                    <div class="med_hist">
+                    
+                    </div>   
+            
+                <br />
+                <button class="booking_button open_modal_with_alert">Lägg till och skicka till ekonomisk rapport</button>
+            </div>
+            <div id="Dokument" class="tabcontent">
+                <label for="upload_file">Ladda upp fil:</label>
+                <input type="file" id="upload_file" name="upload_file">
+                <div class="doc">
+                    
+                </div> 
+
+            </div>
+            <div id="Träningsdagbok" class="tabcontent">
+                     
+                <h3>Dagbok</h3>
+                <div class="train_hist">
+                    
+                </div> 
+                <br />
+                <button class="booking_button open_modal1">Lägg till</button>
+        </div>
+        <div id="Rapporter" class="tabcontent">
+                <div class="reports">
+                    
+                </div> 
+        </div>
+        <div id="Planera" class="tabcontent">
+            <div class="side_by_side">
+                <h3>Planera träning</h3>
+                Typ av träning:
+                <select id="traning_type">
+                    <option>Vila</option>
+                    <option>Longering</option>
+                    <option>Tömkörning</option>
+                    <option>Markarbete</option>
+                    <option>Bomarbete</option>
+                    <option>Hoppa</option>
+                    <option>Rida ut</option>
+                    <option>Vattenbandsträning</option>
+                    <option>Vattenbandsträning</option>
+                    <option>Intervaller</option>
+                    <option>Galoppass</option>
+                    <option>Lösgalopp</option>
+                    <option>Löshoppning</option>
+                </select>
+                <input type="checkbox" id="plan_show_all_checkbok">Visa alla träningar<br><br>
+                <br />
+                <div></div>
+                <strong>Ev. kommentar från tidigare träning: </strong><span id="training_comment" style="color:red"></span><br/><br/> 
+                <input type="datetime-local" id="training_start" name="meeting-time">
+                <br />
+                <br />
+                Längd:
+                <input id="training_duration" type="number" min="1" step="1" />
+                <br />
+                <br />
+                Kommentar: <br />
+                <textarea id='comment_field_training' rows="4" cols="50"></textarea><br />
+                <br />
+                <button id="plan_button" class="booking_button">Spara träning</button>
+                <br /> <br />
+                </div>
+            <div class="side_by_side">
+                <div class="service_calendar calendar_small"></div>
+            </div>
+        </div>
+    </div>
+
+    </div>
+    <div id="service_content" class="main_content">
+        <h2>Tjänster</h2>
+        <div class="tab">
+            <button class="tablinks" onclick="openTab(event, 'Hovslagare')">Hovslagare</button>
+            <button class="tablinks" onclick="openTab(event, 'Veterinär')">Veterinär</button>
+            <button class="tablinks" onclick="openTab(event, 'Behandling')">Behandling/rehab</button>
+            <button class="tablinks" onclick="openTab(event, 'Medicinsk')">Medicinsk behandling</button>
+        </div>
+        <div id="Hovslagare" class="tabcontent">
+            <div class="side_by_side">
+                Hovslagare:
+                <select>
+                    <option>Holmström</option>
+                    <option>Andell</option>
+                </select>
+                </br></br>
+                Häst:
+                <select id="hov_horse">
+                    <option>Cindy</option>
+                    <option>Clayson</option>
+                    <option>Felo Z</option>
+                    <option>Clara´s Heart</option>
+                </select>
+                </br></br>
+                Datum:
+                <input type="date" id="hov_start" name="trip-start">
+                <br /><br />
+                <!-- Telefon:
+            <input type="tel" name="usrtel">
+            <br /><br />-->
+                Kommentar:<br />
+                <textarea id='comment_field' rows="4" cols="50"></textarea><br />
+                <button id="booking_button_hovslagare" class="booking_button">Lägg till</button>
+            </div>
+            <div class="side_by_side">
+                <div class="service_calendar calendar_small"></div>
+            </div>
+        </div>
+        <div id="Veterinär" class="tabcontent">
+            <div class="side_by_side">
+
+                Veterinär:
+                <select>
+                    <option>Holmström</option>
+                    <option>Andell</option>
+                </select>
+                </br></br>
+                Häst:
+                <select id="vet_horse">
+                    <option>Cindy</option>
+                    <option>Clayson</option>
+                    <option>Felo Z</option>
+                    <option>Clara´s Heart</option>
+                </select>
+                </br></br>
+                Datum:
+                <input id='vet_start' type="date" id="start" name="trip-start">
+                <br /><br />
+                Kommentar:<br />
+                <textarea id='vet_comment_field' rows="4" cols="50"></textarea><br />
+                <button id="vet_booking_button" booking_button" class="booking_button">Lägg till</button>
+            </div>
+            <div class="side_by_side">
+                <div class="service_calendar calendar_small"></div>
+            </div>
+        </div>
+        <div id="Behandling" class="tabcontent">
+            <div class="side_by_side">
+                Typ av behandling:
+                <select>
+                    <option>Behandling 1</option>
+                    <option>Behandling 2</option>
+                    <option>Behandling 3</option>
+                </select>
+                </br></br>
+                Häst:
+                <select id="beh_horse">
+                    <option>Cindy</option>
+                    <option>Clayson</option>
+                    <option>Felo Z</option>
+                    <option>Clara´s Heart</option>
+                </select>
+                </br></br>
+                Datum:
+                <input id='beh_start' type="date" id="start" name="trip-start">
+                <br /><br />
+                Kommentar:<br />
+                <textarea id='beh_comment_field' rows="4" cols="50"></textarea><br />
+                <button id='beh_booking_button' class="booking_button">Lägg till</button>
+            </div>
+            <div class="side_by_side">
+                <div class="service_calendar calendar_small"></div>
+            </div>
+        </div>
+        <div id="Medicinsk" class="tabcontent">
+            <div class="side_by_side">
+                Typ av med. behandling:
+                <select>
+                    <option>Behandling 1</option>
+                    <option>Behandling 2</option>
+                    <option>Behandling 3</option>
+                </select>
+                </br></br>
+                Häst:
+                <select id="med_horse">
+                    <option>Cindy</option>
+                    <option>Clayson</option>
+                    <option>Felo Z</option>
+                    <option>Clara´s Heart</option>
+                </select>
+                </br></br>
+                Datum:
+                <input type="date" id="med_start" name="trip-start">
+                <br /><br />
+                Kommentar:<br />
+                <textarea id='med_comment_field' rows="4" cols="50"></textarea><br />
+                <button id='med_booking_button' class="booking_button">Lägg till</button>
+            </div>
+            <div class="side_by_side">
+                <div class="service_calendar calendar_small"></div>
+            </div>
+        </div>
+    </div>
+    <div id="calendar_content">
+        <br />
+        Visa:
+        <select id="calendar_sort">
+            <option>Alla</option>
+            <option>Veterinär</option>
+            <option>Hovslagare</option>
+            <option>Behandling/Rehab</option>
+            <option>Medicinsk Behandling</option>
+            <option>Träning</option>
+        </select>
+        <br /><br />
+        Häst:
+        <select>
+            <option>Alla</option>
+        </select>
+
+        <div id='calendar' class="service_calendar"></div>
+    </div>
+
+    <div id="admin_content" class="main_content">
+        <br />
+        <div class="tab">
+            <button class="tablinks" onclick="openTab(event, 'AddHorse')">Lägg till/ta bort häst</button>
+        </div>
+        <div id="AddHorse" class="tabcontent">
+          (Funktionalitet för att lägga till och ta bort hästar, samt koppla hästar till privatpersoner)
+        </div>
+    </div>
+
+
+    <!-- The Modals -->
+    <div id="modal1" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="modal_close close_modal_button">&times;</span>
+            <h3>Lägg till inlägg</h3>
+            Datum:<br />
+            <input type="date" id="hov_start" name="trip-start">
+            <br /><br />
+            <span class="side_by_side">
+                Typ:<br />
+                <textarea rows="1"></textarea>
+            </span>
+            <span class="side_by_side">
+                Kommentar:<br />
+                <textarea></textarea>
+            </span>
+            <br /> <br /><br /><br />
+            <button class="booking_button close_modal_button" style="float:right">Lägg till</button><button class="cancelbtn close_modal_button"
+                style="float:right">Avbryt</button>
+        </div>
+    </div>
+
+    <div id="modal_with_alert" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="modal_close close_modal_button">&times;</span>
+            <h3>Lägg till inlägg</h3>
+            Datum:<br />
+            <input type="date" id="hov_start" name="trip-start">
+            <br /><br />
+            Kommentar:<br />
+            <textarea></textarea>
+            <br /><br />
+            <span class="side_by_side">
+                Lägg till påminnelse:<br />
+                <input type="date" id="hov_start" name="trip-start">
+            </span>
+            <span class="side_by_side">
+                Påminnelsemeddelande:<br />
+                <textarea></textarea>
+            </span>
+            <br /> <br /><br /><br />
+            <button class="booking_button close_modal_button" style="float:right">Lägg till</button><button class="cancelbtn close_modal_button"
+                style="float:right">Avbryt</button>
+        </div>
+    </div>
+
+    <div id="alert_modal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="modal_close close_modal_button">&times;</span>
+            <h3 class="warning">Påminnelse:</h3>
+            <p>Hovslagare kl. 13 imorgon</p>
+        </div>
+    </div>
+    <div id="add_alert_modal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="modal_close close_modal_button">&times;</span>
+            <h3>Lägg till Påminnelse</h3>
+            Datum:<br />
+            <input type="date" id="hov_start" name="trip-start">
+            <br /><br />
+            Påminnelsemeddelande:<br />
+            <textarea></textarea>
+            <br /><br />
+            <br /> <br /><br /><br />
+            <button class="booking_button close_modal_button" style="float:right">Lägg till</button><button class="cancelbtn close_modal_button"
+                style="float:right">Avbryt</button>
+        </div>
+    </div>
+    </div>
+
+
+</body>
+
+</html>

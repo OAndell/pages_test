@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./src/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="./src/events.js"></script>
+    <script src="./src/cindy.js"></script>
+    <script src="./src/clayson.js"></script>
+    <script src="./src/functions.js"></script>
+    <link rel='stylesheet' href='./packages/fullcalendar-3.9.0/fullcalendar.css' />
+    <script src='./packages/moment.js'></script>
+    <script src='./packages/fullcalendar-3.9.0/fullcalendar.js'></script>
+    <link rel="shortcut icon" href="https://dbvjpegzift59.cloudfront.net/180040/563175-PQpjV.ico" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>STG Horse Organizer</title>
+</head>
+
+<body>
+    <div class="tab">
+        <button id="tab_horse">Häst</button>
+        <button id="tab_calendar">Kalender</button>
+        <button  style="float:right" onclick="window.location.href='./login.html'">Logga ut</button>
+    </div>
+    <div id="horse_content" class="main_content">
+        <div class="btn-group">
+                <h2>Häst: Cindy </h2>
+        </div>
+        <div id="cindy">
+            <div>
+                <p><span
+                        id="add_alert" style="padding: 20px; cursor: pointer;"> <i class="fa fa-calendar-plus-o"></i>
+                        Lägg till påminnelse</span></p>
+            </div>
+            <div class="tab">
+                <button class="tablinks" onclick="openTab(event, 'Journal')">Journal</button>
+                <button class="tablinks" onclick="openTab(event, 'Foderstat')">Foderstat</button>
+                <button class="tablinks" onclick="openTab(event, 'Utrustning')">Utrustning</button>
+                <button class="tablinks" onclick="openTab(event, 'hovslagarbesök')">Senaste hovslagarbesök</button>
+                <button class="tablinks" onclick="openTab(event, 'vet')">Senaste vet. besök</button>
+                <button class="tablinks" onclick="openTab(event, 'behandl')">Senaste behandl. besök</button>
+                <button class="tablinks" onclick="openTab(event, 'Vac')">Vac./Avmask/Med</button>
+                <button class="tablinks" onclick="openTab(event, 'Träningsdagbok')">Träningsdagbok</button>
+                <button class="tablinks" onclick="openTab(event, 'Dokument')">Dokument</button>
+
+            </div>
+            <div id="Journal" class="tabcontent">
+                <div class="journal">
+                   
+                </div>
+            </div>
+
+            <div id="Foderstat" class="tabcontent">
+                <div class="foder"></div>
+            </div>
+
+
+
+            <div id="Utrustning" class="tabcontent">
+                <div class="gear">
+
+                </div>
+
+
+            </div>
+
+            <div id="hovslagarbesök" class="tabcontent">
+                    <div class="hov_hist">
+                    
+                    </div>
+                <br />
+            </div>
+
+            <div id="vet" class="tabcontent">
+                    <div class="vet_hist">
+                    
+                    </div>               
+                <br />
+            </div>
+
+            <div id="behandl" class="tabcontent">
+                    <div class="beh_hist">
+                    
+                    </div>   
+                <br />
+            </div>
+
+            <div id="Vac" class="tabcontent">
+                    <div class="med_hist">
+                    
+                    </div>   
+            
+                <br />
+            </div>
+            <div id="Dokument" class="tabcontent">
+                <label for="upload_file">Ladda upp fil:</label>
+                <input type="file" id="upload_file" name="upload_file">
+                <div class="doc">
+                    
+                </div> 
+
+            </div>
+            <div id="Träningsdagbok" class="tabcontent">
+                     
+                <h3>Dagbok</h3>
+                <div class="train_hist">
+                    
+                </div> 
+                <br />
+        </div>
+    </div>
+    
+    </div>
+    <div id="calendar_content">
+        <br />
+        Visa:
+        <select id="private_sort">
+            <option>Alla</option>
+            <option>Veterinär</option>
+            <option>Hovslagare</option>
+            <option>Behandling/Rehab</option>
+            <option>Medicinsk Behandling</option>
+            <option>Träning</option>
+        </select>
+        <br /><br />
+
+        <div id='calendar' class="private_calendar"></div>
+    </div>
+
+
+
+    <!-- The Modals -->
+    <div id="modal1" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="modal_close close_modal_button">&times;</span>
+            <h3>Lägg till inlägg</h3>
+            Datum:<br />
+            <input type="date" id="hov_start" name="trip-start">
+            <br /><br />
+            <span class="side_by_side">
+                Typ:<br />
+                <textarea rows="1"></textarea>
+            </span>
+            <span class="side_by_side">
+                Kommentar:<br />
+                <textarea></textarea>
+            </span>
+            <br /> <br /><br /><br />
+            <button class="booking_button close_modal_button" style="float:right">Lägg till</button><button class="cancelbtn close_modal_button"
+                style="float:right">Avbryt</button>
+        </div>
+    </div>
+
+    <div id="modal_with_alert" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="modal_close close_modal_button">&times;</span>
+            <h3>Lägg till inlägg</h3>
+            Datum:<br />
+            <input type="date" id="hov_start" name="trip-start">
+            <br /><br />
+            Kommentar:<br />
+            <textarea></textarea>
+            <br /><br />
+            <span class="side_by_side">
+                Lägg till påminnelse:<br />
+                <input type="date" id="hov_start" name="trip-start">
+            </span>
+            <span class="side_by_side">
+                Påminnelsemeddelande:<br />
+                <textarea></textarea>
+            </span>
+            <br /> <br /><br /><br />
+            <button class="booking_button close_modal_button" style="float:right">Lägg till</button><button class="cancelbtn close_modal_button"
+                style="float:right">Avbryt</button>
+        </div>
+    </div>
+
+    <div id="alert_modal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="modal_close close_modal_button">&times;</span>
+            <h3 class="warning">Påminnelse:</h3>
+            <p>Hovslagare kl. 13 imorgon</p>
+        </div>
+    </div>
+    <div id="add_alert_modal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="modal_close close_modal_button">&times;</span>
+            <h3>Lägg till nelse</h3>
+            Datum:<br />
+            <input type="date" id="hov_start" name="trip-start">
+            <br /><br />
+            Påminnelsemeddelande:<br />
+            <textarea></textarea>
+            <br /><br />
+            <br /> <br /><br /><br />
+            <button class="booking_button close_modal_button" style="float:right">Lägg till</button><button class="cancelbtn close_modal_button"
+                style="float:right">Avbryt</button>
+        </div>
+    </div>
+    </div>
+
+
+</body>
+
+</html>
