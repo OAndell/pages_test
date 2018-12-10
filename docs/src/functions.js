@@ -9,13 +9,13 @@ $(function () {
   $('#calendar_content').hide();
   $('#admin_content').hide();
   $('.service_calendar').show();
-  showHourse();
+  showHorse();
   setCindy()
 
 
   // OPEN TABS
   $('#tab_horse').click(function (event) {
-    showHourse();
+    showHorse();
   });
   $('#tab_service').click(function (event) {
     showService();
@@ -26,6 +26,10 @@ $(function () {
   $('#tab_admin').click(function (event) {
     showAdmin();
   });
+  $('#tab_abonnemang').click(function (event) {
+    showAbonnemang();
+  });
+
   /* ---------------------------------
               BOOKINGS
    --------------------------------- */
@@ -103,10 +107,13 @@ $(function () {
     $('#service_content').hide();
     $('#calendar_content').show();
     $('.service_calendar').show();
+    $('#abonnemang_content').hide();
+
 
     $('#tab_service').removeClass("active")
     $('#tab_horse').removeClass("active")
     $('#tab_calendar').addClass("active")
+    $('#tab_abonnemang').removeClass("active")
 
     $('#admin_content').hide();
     $('#tab_admin').removeClass("active")
@@ -117,15 +124,18 @@ $(function () {
 
   }
 
-  function showHourse() {
+  function showHorse() {
     $('#horse_content').show();
     $('#service_content').hide();
     $('#calendar_content').hide();
+    $('#abonnemang_content').hide();
+
 
 
     $('#tab_service').removeClass("active")
     $('#tab_horse').addClass("active")
     $('#tab_calendar').removeClass("active")
+    $('#tab_abonnemang').removeClass("active")
 
     $('#admin_content').hide();
     $('#tab_admin').removeClass("active")
@@ -135,10 +145,13 @@ $(function () {
     $('#horse_content').hide();
     $('#service_content').show();
     $('#calendar_content').hide();
+    $('#abonnemang_content').hide();
+
 
     $('#tab_service').addClass("active")
     $('#tab_horse').removeClass("active")
     $('#tab_calendar').removeClass("active")
+    $('#tab_abonnemang').removeClass("active")
 
     $('#admin_content').hide();
     $('#tab_admin').removeClass("active")
@@ -150,11 +163,28 @@ $(function () {
     $('#service_content').hide();
     $('#calendar_content').hide();
     $('#admin_content').show();
+    $('#abonnemang_content').hide();
+
 
     $('#tab_service').removeClass("active")
     $('#tab_horse').removeClass("active")
     $('#tab_calendar').removeClass("active")
     $('#tab_admin').addClass("active")
+    $('#tab_abonnemang').removeClass("active")
+  }
+
+  function showAbonnemang(){
+    $('#horse_content').hide();
+    $('#service_content').hide();
+    $('#calendar_content').hide();
+    $('#admin_content').hide();
+    $('#abonnemang_content').show();
+
+    $('#tab_service').removeClass("active")
+    $('#tab_horse').removeClass("active")
+    $('#tab_calendar').removeClass("active")
+    $('#tab_admin').removeClass("active")
+    $('#tab_abonnemang').addClass("active")
   }
   
 
